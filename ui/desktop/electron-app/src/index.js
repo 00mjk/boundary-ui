@@ -208,7 +208,23 @@ app.on('ready', async () => {
     console.log('The main window has become responsive again.');
   });
 
+  // If is mac, do not destroy mainWindow when closing, just hide it
   mainWindow.on('closed', () => {
+    if (process.platform === 'darwin') {
+      mainWindow.hide();
+    }
+  });
+
+  // In mac, when the app still running in background, bring back mainWindow when user clicks in Boundary icon
+  // more info about this: https://www.electronjs.org/docs/latest/tutorial/quick-start#open-a-window-if-none-are-open-macos
+  app.on('activate', () => {
+    if (BrowserWindow.getAllWindows().length === 0) {
+      mainWindow.show();
+    }
+  });
+
+  // When quit the app (close main window on Linux and Windows), cmd+q in Mac, destroy mainWindow
+  app.on('quit', () => {
     mainWindow = null;
   });
 });
