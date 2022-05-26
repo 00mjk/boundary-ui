@@ -6,6 +6,9 @@ import { notifySuccess, notifyError } from 'core/decorators/notify';
 /**
  * The change password flow is associated only with password-type auth methods.
  */
+/**
+ * The change password flow is associated only with password-type auth methods.
+ */
 export default class AccountChangePasswordRoute extends Route {
   // =services
 
