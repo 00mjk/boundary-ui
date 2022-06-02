@@ -232,3 +232,27 @@
     }
   }
 }
+
+.choose-path {
+  display: block;
+  width: sizing.rems(xl) * 16;
+}
+
+.choose-path-cards {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  flex-grow: 1;
+
+  div:nth(2) {
+    flex: 1;
+  }
+}
+
+.choose-path-button {
+  width: 100%;
+
+  .rose-button-wrapper {
+    display: block;
+  }
+}

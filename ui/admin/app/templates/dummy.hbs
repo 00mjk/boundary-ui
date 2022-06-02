@@ -1,0 +1,75 @@
+<Rose::Layout::Centered class='choose-path'>
+  <Rose::Frame>
+    <:header>
+      <h2>{{t 'form.welcome.label'}}</h2>
+    </:header>
+    <:body>
+      <p>{{t 'form.welcome.help'}}</p>
+      <Rose::Form::Radio::Group
+        @name='type'
+        @changed={{route-action 'toggleRadio'}}
+        @selectedValue='quick'
+        @inline={{false}}
+        as |radioGroup|
+      >
+        <div class='choose-path-cards'>
+          <radioGroup.card
+            class='choose-path-radio-label'
+            @label='Quick setup'
+            @helperText='I want to see how Boundary works, help me set up my first scopes and targets.'
+            @value='quick'
+            @layout='tile'
+          />
+
+          <radioGroup.card
+            @label='Manual configuration'
+            @helperText='I want to set up my first scopes and targets myself, starting with my first org.'
+            @value='manual'
+            @layout='tile'
+          />
+        </div>
+      </Rose::Form::Radio::Group>
+      <div>
+        <Rose::Button
+          class='choose-path-button'
+          @style='primary'
+          {{on 'click' (route-action 'next')}}
+        >
+          {{t 'actions.next'}}
+        </Rose::Button>
+      </div>
+      {{!-- <Rose::Form
+        class='full-width'
+        @onSubmit={{route-action 'next'}}
+        @cancel={{false}}
+        @disabled={{false}}
+        as |form|
+      >
+        <form.radioGroup
+          @name='path'
+          @selectedValue='quick'
+          @changed={{route-action 'toggleRadio'}}
+          as |radioGroup|
+        >
+          <radioGroup.card
+            @label='Quick setup'
+            @helperText='I want to see how Boundary works, help me set up my first scopes and targets.'
+            @value='quick'
+            @layout='tile'
+          />
+          <radioGroup.card
+            @label='Manual configuration'
+            @helperText='I want to set up my first scopes and targets myself, starting with my first org.'
+            @value='manual'
+            @layout='tile'
+          />
+        </form.radioGroup>
+        <form.actions
+          @disabled={{false}}
+          @submitText={{t 'actions.next'}}
+          @showCancel={{false}}
+        />
+      </Rose::Form> --}}
+    </:body>
+  </Rose::Frame>
+</Rose::Layout::Centered>
